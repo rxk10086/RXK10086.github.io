@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技研发项目预算表（国家标准版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0052CC',
+                        secondary: '#42526E',
+                        accent: '#2563EB',
+                        light: '#F7FAFC',
+                        border: '#E2E8F0'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .table-border {
+                @apply border border-border;
+            }
+            .form-input {
+                @apply w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary;
+            }
+            .section-title {
+                @apply text-lg font-semibold text-secondary mb-4 border-b pb-2;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded text-sm hover:bg-primary/90 transition-colors;
+            }
+            .btn-secondary {
+                @apply bg-white text-secondary border border-secondary px-4 py-2 rounded text-sm hover:bg-gray-50 transition-colors;
+            }
+            .explain-icon {
+                @apply text-accent cursor-help hover:text-primary transition-colors;
+            }
+            .summary-row {
+                @apply bg-gray-50 font-medium;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- 标题区域 -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-secondary mb-2">科技研发项目预算表</h1>
+            <p class="text-gray-500 text-sm">国家标准GB/T XXXX-XXXX版本</p>
+        </div>
+        
+        <!-- 项目基本信息 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">一、项目基本信息</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目名称 <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="请输入项目全称">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目编号 <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="按规定格式填写">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目负责人 <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="填写负责人姓名">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">联系电话 <span class="text-red-500">*</span></label>
+                    <input type="tel" class="form-input" placeholder="填写有效联系电话">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">承担单位 <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="填写项目承担单位全称">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">所属领域</label>
+                    <select class="form-input">
+                        <option value="">请选择</option>
+                        <option value="information">信息技术</option>
+                        <option value="biotech">生物技术</option>
+                        <option value="newmaterial">新材料</option>
+                        <option value="energy">新能源</option>
+                        <option value="advancedmanufacturing">高端装备制造</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目起始日期 <span class="text-red-500">*</span></label>
+                    <input type="date" class="form-input">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目结束日期 <span class="text-red-500">*</span></label>
+                    <input type="date" class="form-input">
+                </div>
+                <div class="lg:col-span-4">
+                    <label class="block text-sm text-gray-600 mb-1">项目简要说明</label>
+                    <textarea class="form-input h-16" placeholder="简要描述项目研究内容、目标和预期成果（不超过300字）"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 预算总表 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">二、预算总表（单位：元）</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-border">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算科目</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">占总预算比例（%）</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算说明</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-table-body" class="divide-y divide-border">
+                        <tr>
+                            <td class="table-border px-3 py-2 text-sm">1</td>
+                            <td class="table-border px-3 py-2 text-sm">一、直接费用</td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input summary-input" id="direct-cost-total" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm" id="direct-cost-percentage">0.00%</td>
+                            <td class="table-border px-3 py-2 text-sm"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-border px-3 py-2 text-sm">2</td>
+                            <td class="table-border px-3 py-2 text-sm">二、间接费用</td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input summary-input" id="indirect-cost-total" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm" id="indirect-cost-percentage">0.00%</td>
+                            <td class="table-border px-3 py-2 text-sm"></td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td class="table-border px-3 py-2 text-sm font-medium">3</td>
+                            <td class="table-border px-3 py-2 text-sm font-medium">总预算金额</td>
+                            <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input summary-input" id="total-budget" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm font-medium">100.00%</td>
+                            <td class="table-border px-3 py-2 text-sm font-medium"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 直接费用明细表 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">三、直接费用明细（单位：元）</h2>
+            
+            <!-- 1. 人员费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">1. 人员费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="personnel">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">1.1</td>
+                                <td class="table-border px-3 py-2 text-sm">研发人员工资薪金
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指直接参与项目研究开发人员的工资、薪金、奖金、津贴、补贴等"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="personnel" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">1.2</td>
+                                <td class="table-border px-3 py-2 text-sm">外聘专家咨询费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指为项目研发所发生的专家咨询费用，包括专家会议费、交通费等"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="personnel" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">1.3</td>
+                                <td class="table-border px-3 py-2 text-sm">劳务费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指支付给项目临时聘用人员的劳务费用"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="personnel" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="2">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="personnel-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 2. 设备费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">2. 设备费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="equipment">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">2.1</td>
+                                <td class="table-border px-3 py-2 text-sm">购置设备费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发所必需的专用仪器、设备的购置费用"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="equipment" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写设备名称、规格、数量、单价"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">2.2</td>
+                                <td class="table-border px-3 py-2 text-sm">设备租赁费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发所必需的专用仪器、设备的租赁费用"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="equipment" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写设备名称、租赁时长、单价"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">2.3</td>
+                                <td class="table-border px-3 py-2 text-sm">设备改造与维修费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指对现有仪器设备进行改造及维修所发生的费用"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="equipment" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="2">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="equipment-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 3. 材料费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">3. 材料费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">材料名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">规格型号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">单位</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">数量</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">单价（元）</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">金额（元）</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">备注说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="materials">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">3.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="材料名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="规格型号"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="单位"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-qty" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-price" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-amount" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="用途说明">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中消耗的各种原材料、辅助材料等低值易耗品的采购及运输、装卸、整理等费用"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">3.2</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="材料名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="规格型号"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="单位"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-qty" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-price" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-amount" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="用途说明"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">3.3</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="材料名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="规格型号"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="单位"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-qty" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-price" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-amount" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="用途说明"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm text-center" colspan="6">
+                                    <button type="button" class="text-accent text-sm hover:text-primary" id="add-material">
+                                        <i class="fa fa-plus-circle mr-1"></i> 添加材料
+                                    </button>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="materials-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 4. 测试化验加工费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">4. 测试化验加工费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">测试化验内容</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">承担单位</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="testing">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">4.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="测试化验内容"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="承担单位名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="testing" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="填写计算依据">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中所发生的检验、测试、化验及加工等费用"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">4.2</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="测试化验内容"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="承担单位名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="testing" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="3">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="testing-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 5. 燃料动力费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">5. 燃料动力费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="energy">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">5.1</td>
+                                <td class="table-border px-3 py-2 text-sm">水电费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中相关大型仪器设备、专用科学装置等运行发生的水、电、气、燃料消耗费用等"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="energy" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">5.2</td>
+                                <td class="table-border px-3 py-2 text-sm">其他燃料动力费</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="energy" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="2">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="energy-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 6. 差旅费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">6. 差旅费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">出差事由</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">出差地点</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">出差人数</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">出差天数</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="travel">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">6.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="出差事由"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="出差地点"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input travel-qty" min="0"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input travel-days" min="0"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="travel" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="填写计算依据">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中开展科学实验（试验）、科学考察、业务调研、学术交流等所发生的外埠差旅费、市内交通费用等"></i>
+                                </td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="5">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="travel-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 7. 会议费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">7. 会议费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">会议名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">会议地点</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">会议天数</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">参会人数</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="meeting">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">7.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="会议名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="会议地点"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input" min="0"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input" min="0"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="meeting" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="填写计算依据">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中为组织开展学术研讨、咨询以及协调项目等活动而发生的会议费用"></i>
+                                </td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="5">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="meeting-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 8. 国际合作与交流费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">8. 国际合作与交流费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">活动内容</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">前往国家/地区</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="international">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">8.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="如：出国参加学术会议"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="国家或地区名称"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="international" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="填写计算依据">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中项目研究人员出国及外国专家来华工作的费用"></i>
+                                </td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="3">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="international-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 9. 出版/文献/信息传播/知识产权事务费 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">9. 出版/文献/信息传播/知识产权事务费</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="intellectual">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">9.1</td>
+                                <td class="table-border px-3 py-2 text-sm">文献资料费
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指项目研究开发过程中需要支付的出版费、资料费、专用软件购买费、文献检索费、专业通信费、专利申请及其他知识产权事务等费用"></i>
+                                </td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="intellectual" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">9.2</td>
+                                <td class="table-border px-3 py-2 text-sm">专利申请及维护费</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="intellectual" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">9.3</td>
+                                <td class="table-border px-3 py-2 text-sm">论文发表费</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="intellectual" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="2">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="intellectual-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 10. 其他费用 -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-secondary mb-3">10. 其他费用</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-border">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                                <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="direct-cost-section" data-section="other">
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">10.1</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="其他与项目相关的费用"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="other" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm">
+                                    <input type="text" class="form-input" placeholder="填写费用内容及计算依据">
+                                    <i class="fa fa-question-circle explain-icon ml-1" title="指与项目研究开发直接相关的其他支出。请注意：此项费用一般不得超过项目经费总额的10%"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-border px-3 py-2 text-sm">10.2</td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="其他与项目相关的费用"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input budget-input" data-section="other" min="0" step="0.01"></td>
+                                <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="填写费用内容及计算依据"></td>
+                            </tr>
+                            <tr class="summary-row">
+                                <td class="table-border px-3 py-2 text-sm font-medium" colspan="2">小计</td>
+                                <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input section-total" id="other-total" readonly></td>
+                                <td class="table-border px-3 py-2 text-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 直接费用合计 -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-border">
+                    <tbody>
+                        <tr class="summary-row">
+                            <td class="table-border px-3 py-2 text-sm font-medium" colspan="6">直接费用总计</td>
+                            <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input" id="direct-cost-total-calc" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 间接费用明细表 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">四、间接费用明细（单位：元）</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-border">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">费用名称</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算基数</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比例（%）</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">预算金额</th>
+                            <th class="table-border px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">计算依据及说明</th>
+                        </tr>
+                    </thead>
+                    <tbody class="indirect-cost-section">
+                        <tr>
+                            <td class="table-border px-3 py-2 text-sm">1</td>
+                            <td class="table-border px-3 py-2 text-sm">管理费
+                                <i class="fa fa-question-circle explain-icon ml-1" title="指项目承担单位为组织和支持项目研究开发而发生的无法在直接费用中列支的相关费用"></i>
+                            </td>
+                            <td class="table-border px-3 py-2 text-sm">直接费用总额</td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input indirect-rate" min="0" max="20" step="0.01" value="5"></td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input indirect-amount" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="按单位规定填写"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-border px-3 py-2 text-sm">2</td>
+                            <td class="table-border px-3 py-2 text-sm">绩效支出
+                                <i class="fa fa-question-circle explain-icon ml-1" title="指为提高科研工作绩效而安排的相关支出"></i>
+                            </td>
+                            <td class="table-border px-3 py-2 text-sm">直接费用总额</td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input indirect-rate" min="0" max="50" step="0.01" value="10"></td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input indirect-amount" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="按单位规定填写"></td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td class="table-border px-3 py-2 text-sm font-medium" colspan="4">间接费用总计</td>
+                            <td class="table-border px-3 py-2 text-sm font-medium"><input type="number" class="form-input" id="indirect-cost-total-calc" readonly></td>
+                            <td class="table-border px-3 py-2 text-sm"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 预算编制说明 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">五、预算编制说明</h2>
+            <div class="mb-4">
+                <label class="block text-sm text-gray-600 mb-1">预算编制依据</label>
+                <textarea class="form-input h-20" placeholder="请说明本预算的编制依据，包括相关政策文件、收费标准等"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm text-gray-600 mb-1">预算调整说明（如适用）</label>
+                <textarea class="form-input h-16" placeholder="如对原预算进行过调整，请说明调整原因、调整内容及审批情况"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm text-gray-600 mb-1">其他需要说明的事项</label>
+                <textarea class="form-input h-16" placeholder="其他需要说明的与预算相关的事项"></textarea>
+            </div>
+        </div>
+        
+        <!-- 审核意见 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="section-title">六、审核意见</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">项目负责人意见</label>
+                    <textarea class="form-input h-16" placeholder="项目负责人对预算的意见"></textarea>
+                    <div class="mt-2 flex justify-between">
+                        <input type="text" class="form-input w-48" placeholder="负责人签字">
+                        <input type="date" class="form-input w-48">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">单位科研管理部门意见</label>
+                    <textarea class="form-input h-16" placeholder="科研管理部门审核意见"></textarea>
+                    <div class="mt-2 flex justify-between">
+                        <input type="text" class="form-input w-48" placeholder="负责人签字">
+                        <input type="date" class="form-input w-48">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">单位财务部门意见</label>
+                    <textarea class="form-input h-16" placeholder="财务部门审核意见"></textarea>
+                    <div class="mt-2 flex justify-between">
+                        <input type="text" class="form-input w-48" placeholder="负责人签字">
+                        <input type="date" class="form-input w-48">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">单位审批意见</label>
+                    <textarea class="form-input h-16" placeholder="单位领导审批意见"></textarea>
+                    <div class="mt-2 flex justify-between">
+                        <input type="text" class="form-input w-48" placeholder="审批人签字">
+                        <input type="date" class="form-input w-48">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 操作按钮 -->
+        <div class="flex justify-center space-x-4 mb-8">
+            <button type="button" class="btn-secondary" id="reset-form">
+                <i class="fa fa-refresh mr-1"></i> 重置表单
+            </button>
+            <button type="button" class="btn-secondary" id="save-draft">
+                <i class="fa fa-save mr-1"></i> 保存草稿
+            </button>
+            <button type="button" class="btn-primary" id="print-form">
+                <i class="fa fa-print mr-1"></i> 打印表单
+            </button>
+            <button type="button" class="btn-primary" id="submit-form">
+                <i class="fa fa-check mr-1"></i> 提交审核
+            </button>
+        </div>
+    </div>
+    
+    <!-- 提示框 -->
+    <div id="notification" class="fixed top-4 right-4 bg-white shadow-lg rounded-md p-4 max-w-xs transform transition-all duration-300 translate-x-full opacity-0 z-50">
+        <div class="flex items-start">
+            <div class="flex-shrink-0 text-green-500">
+                <i class="fa fa-check-circle text-xl"></i>
+            </div>
+            <div class="ml-3">
+                <h3 class="text-sm font-medium text-gray-800" id="notification-title">操作成功</h3>
+                <div class="mt-1 text-sm text-gray-600" id="notification-message">您的操作已完成。</div>
+            </div>
+            <button type="button" class="ml-auto flex-shrink-0 text-gray-400 hover:text-gray-600" id="close-notification">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 计算各部分小计
+            calculateSectionTotals();
+            
+            // 计算直接费用总计和间接费用总计
+            calculateTotalCosts();
+            
+            // 为预算输入框添加事件监听
+            document.querySelectorAll('.budget-input').forEach(input => {
+                input.addEventListener('input', function() {
+                    const section = this.getAttribute('data-section');
+                    calculateSectionTotal(section);
+                    calculateTotalCosts();
+                });
+            });
+            
+            // 为材料数量和单价输入框添加事件监听
+            document.querySelectorAll('.material-qty, .material-price').forEach(input => {
+                input.addEventListener('input', function() {
+                    const row = this.closest('tr');
+                    const qty = parseFloat(row.querySelector('.material-qty').value) || 0;
+                    const price = parseFloat(row.querySelector('.material-price').value) || 0;
+                    row.querySelector('.material-amount').value = (qty * price).toFixed(2);
+                    
+                    calculateSectionTotal('materials');
+                    calculateTotalCosts();
+                });
+            });
+            
+            // 为间接费用比例输入框添加事件监听
+            document.querySelectorAll('.indirect-rate').forEach(input => {
+                input.addEventListener('input', function() {
+                    calculateIndirectAmounts();
+                    calculateTotalCosts();
+                });
+            });
+            
+            // 添加新材料按钮事件
+            document.getElementById('add-material').addEventListener('click', function() {
+                const tableBody = document.querySelector('.direct-cost-section[data-section="materials"]');
+                const lastRow = tableBody.lastElementChild;
+                const newRow = document.createElement('tr');
+                
+                // 获取当前最大序号
+                const rows = tableBody.querySelectorAll('tr:not(:last-child)');
+                const newIndex = rows.length + 3.1; // 3.x系列
+                
+                newRow.innerHTML = `
+                    <td class="table-border px-3 py-2 text-sm">${newIndex.toFixed(1)}</td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="材料名称"></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="规格型号"></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="单位"></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-qty" min="0" step="0.01"></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-price" min="0" step="0.01"></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="number" class="form-input material-amount" readonly></td>
+                    <td class="table-border px-3 py-2 text-sm"><input type="text" class="form-input" placeholder="用途说明"></td>
+                `;
+                
+                // 在小计行前插入新行
+                tableBody.insertBefore(newRow, lastRow);
+                
+                // 为新添加的输入框添加事件监听
+                newRow.querySelector('.material-qty').addEventListener('input', function() {
+                    const qty = parseFloat(newRow.querySelector('.material-qty').value) || 0;
+                    const price = parseFloat(newRow.querySelector('.material-price').value) || 0;
+                    newRow.querySelector('.material-amount').value = (qty * price).toFixed(2);
+                    
+                    calculateSectionTotal('materials');
+                    calculateTotalCosts();
+                });
+                
+                newRow.querySelector('.material-price').addEventListener('input', function() {
+                    const qty = parseFloat(newRow.querySelector('.material-qty').value) || 0;
+                    const price = parseFloat(newRow.querySelector('.material-price').value) || 0;
+                    newRow.querySelector('.material-amount').value = (qty * price).toFixed(2);
+                    
+                    calculateSectionTotal('materials');
+                    calculateTotalCosts();
+                });
+            });
+            
+            // 重置表单按钮事件
+            document.getElementById('reset-form').addEventListener('click', function() {
+                if (confirm('确定要重置表单吗？所有已填写的数据将被清空。')) {
+                    document.querySelectorAll('input, textarea').forEach(element => {
+                        if (!element.readOnly) {
+                            element.value = '';
+                        }
+                    });
+                    
+                    // 重置间接费用比例默认值
+                    document.querySelectorAll('.indirect-rate')[0].value = '5';
+                    document.querySelectorAll('.indirect-rate')[1].value = '10';
+                    
+                    // 重新计算所有合计
+                    calculateSectionTotals();
+                    calculateIndirectAmounts();
+                    calculateTotalCosts();
+                    
+                    showNotification('表单已重置', '所有输入内容已清空');
+                }
+            });
+            
+            // 保存草稿按钮事件
+            document.getElementById('save-draft').addEventListener('click', function() {
+                showNotification('保存成功', '预算表单已保存为草稿');
+            });
+            
+            // 打印表单按钮事件
+            document.getElementById('print-form').addEventListener('click', function() {
+                window.print();
+            });
+            
+            // 提交审核按钮事件
+            document.getElementById('submit-form').addEventListener('click', function() {
+                if (confirm('确定要提交审核吗？提交后将无法修改。')) {
+                    showNotification('提交成功', '预算表单已提交审核，等待审批');
+                }
+            });
+            
+            // 关闭通知按钮事件
+            document.getElementById('close-notification').addEventListener('click', function() {
+                hideNotification();
+            });
+        });
+        
+        // 计算指定部分的小计
+        function calculateSectionTotal(section) {
+            let total = 0;
+            
+            if (section === 'materials') {
+                // 材料费用计算方式不同，需要特殊处理
+                document.querySelectorAll('.direct-cost-section[data-section="materials"] tr:not(:last-child)').forEach(row => {
+                    const amount = parseFloat(row.querySelector('.material-amount').value) || 0;
+                    total += amount;
+                });
+            } else {
+                // 其他费用类型的计算
+                document.querySelectorAll(`.budget-input[data-section="${section}"]`).forEach(input => {
+                    const value = parseFloat(input.value) || 0;
+                    total += value;
+                });
+            }
+            
+            // 更新小计
+            document.getElementById(`${section}-total`).value = total.toFixed(2);
+            return total;
+        }
+        
+        // 计算所有部分的小计
+        function calculateSectionTotals() {
+            const sections = ['personnel', 'equipment', 'materials', 'testing', 'energy', 'travel', 'meeting', 'international', 'intellectual', 'other'];
+            sections.forEach(section => {
+                calculateSectionTotal(section);
+            });
+        }
+        
+        // 计算间接费用金额
+        function calculateIndirectAmounts() {
+            const directCostTotal = parseFloat(document.getElementById('direct-cost-total-calc').value) || 0;
+            const rows = document.querySelectorAll('.indirect-cost-section tr:not(:last-child)');
+            
+            rows.forEach(row => {
+                const rate = parseFloat(row.querySelector('.indirect-rate').value) || 0;
+                const amount = (directCostTotal * rate / 100).toFixed(2);
+                row.querySelector('.indirect-amount').value = amount;
+            });
+            
+            // 计算间接费用总计
+            let indirectTotal = 0;
+            document.querySelectorAll('.indirect-amount').forEach(input => {
+                indirectTotal += parseFloat(input.value) || 0;
+            });
+            document.getElementById('indirect-cost-total-calc').value = indirectTotal.toFixed(2);
+            document.getElementById('indirect-cost-total').value = indirectTotal.toFixed(2);
+        }
+        
+        // 计算总费用
+        function calculateTotalCosts() {
+            // 计算直接费用总计
+            const sections = ['personnel', 'equipment', 'materials', 'testing', 'energy', 'travel', 'meeting', 'international', 'intellectual', 'other'];
+            let directTotal = 0;
+            
+            sections.forEach(section => {
+                const sectionTotal = parseFloat(document.getElementById(`${section}-total`).value) || 0;
+                directTotal += sectionTotal;
+            });
+            
+            document.getElementById('direct-cost-total-calc').value = directTotal.toFixed(2);
+            document.getElementById('direct-cost-total').value = directTotal.toFixed(2);
+            
+            // 计算间接费用
+            calculateIndirectAmounts();
+            
+            // 计算总预算
+            const indirectTotal = parseFloat(document.getElementById('indirect-cost-total').value) || 0;
+            const totalBudget = directTotal + indirectTotal;
+            document.getElementById('total-budget').value = totalBudget.toFixed(2);
+            
+            // 计算各部分占比
+            const directPercentage = totalBudget > 0 ? ((directTotal / totalBudget) * 100).toFixed(2) : '0.00';
+            const indirectPercentage = totalBudget > 0 ? ((indirectTotal / totalBudget) * 100).toFixed(2) : '0.00';
+            
+            document.getElementById('direct-cost-percentage').textContent = `${directPercentage}%`;
+            document.getElementById('indirect-cost-percentage').textContent = `${indirectPercentage}%`;
+        }
+        
+        // 显示通知
+        function showNotification(title, message) {
+            const notification = document.getElementById('notification');
+            const titleElement = document.getElementById('notification-title');
+            const messageElement = document.getElementById('notification-message');
+            
+            titleElement.textContent = title;
+            messageElement.textContent = message;
+            
+            notification.classList.remove('translate-x-full', 'opacity-0');
+            notification.classList.add('translate-x-0', 'opacity-100');
+            
+            // 3秒后自动隐藏
+            setTimeout(hideNotification, 3000);
+        }
+        
+        // 隐藏通知
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('translate-x-0', 'opacity-100');
+            notification.classList.add('translate-x-full', 'opacity-0');
+        }
+    </script>
+</body>
+</html>
